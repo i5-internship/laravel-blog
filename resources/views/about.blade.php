@@ -2,6 +2,10 @@
 
 @section('title' , 'Abouts')
 
+@section('sidebar')
+    @parent
+    <p>This is appended to the master sidebar.</p>
+@endsection
 
 @section('content')
     <header class="masthead" style="background-image: url({{ asset('img/about-bg.jpg') }})">

@@ -32,6 +32,10 @@
 @include('partials.navbar')
 
 <!-- Main Content -->
+@section('sidebar')
+    <p>This is the master sidebar.</p>
+@show
+
 @yield('content')
 
 
