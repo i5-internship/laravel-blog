@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Clean Blog - Start Bootstrap Theme</title>
+    <title>{{ config('app.name') }} | @yield('title')</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -30,9 +30,6 @@
 
 <!-- Navigation -->
 @include('partials.navbar')
-
-<!-- Page Header -->
-@yield('header')
 
 <!-- Main Content -->
 @yield('content')

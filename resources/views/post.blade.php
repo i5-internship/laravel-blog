@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('header')
+@section('title' , 'Post')
+
+@section('content')
     <header class="masthead" style="background-image: url({{ asset('img/post-bg.jpg') }})">
         <div class="overlay"></div>
         <div class="container">
@@ -17,9 +19,6 @@
             </div>
         </div>
     </header>
-@endsection
-
-@section('content')
     <article>
         <div class="container">
             <div class="row">
