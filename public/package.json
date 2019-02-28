@@ -1,20 +1,24 @@
 {
   "name": "public",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "bootstrap": "^4.3.1",
-    "chart.js": "^2.7.3",
-    "jquery": "^3.3.1",
-    "jquery.easing": "^1.4.1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i5-internship/laravel-blog.git"
   },
-  "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.7.2"
+  "bugs": {
+    "url": "https://github.com/i5-internship/laravel-blog/issues"
+  },
+  "homepage": "https://github.com/i5-internship/laravel-blog#readme",
+  "description": "",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.7.2",
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.3.1"
   }
 }
