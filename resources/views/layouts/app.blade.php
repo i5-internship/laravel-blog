@@ -34,8 +34,6 @@
 <!-- Main Content -->
 @yield('content')
 
-
-
 <!-- Footer -->
 @include('partials.footer')
 
