@@ -68,15 +68,15 @@ class UserController extends Controller
         ];
 
         $datafound = null;
-        $message=null;
+        $message = null;
 
         foreach ($datas as $data) {
             if ($data['id'] == $id) {
                 $datafound = $data;
-            }else{
+            } else {
                 $message = 'Data not found';
             }
         }
-        return view('user-show', compact('datafound','message'));
+        return view('user-show', compact('datafound', 'message'));
     }
 }
