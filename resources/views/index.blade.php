@@ -16,19 +16,19 @@
             </div>
         </div>
     </header>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                <div class="post-preview">
-                    @if(isset($datas) && count($datas) > 0)
-                        @foreach($datas as $data)
-                            <h3><a href="{{ url('user',$data['id']) }}">{{ $data['name'] }} </a></h3><br>
-                        @endforeach
-                    @endif
-                </div>
-            </div>
-        </div>
-    </div>
+    {{--<div class="container">--}}
+        {{--<div class="row">--}}
+            {{--<div class="col-lg-8 col-md-10 mx-auto">--}}
+                {{--<div class="post-preview">--}}
+                    {{--@if(isset($datas) && count($datas) > 0)--}}
+                        {{--@foreach($datas as $data)--}}
+                            {{--<h3><a href="{{ url('user',$data['id']) }}">{{ $data['name'] }} </a></h3><br>--}}
+                        {{--@endforeach--}}
+                    {{--@endif--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
-    <hr>
+    {{--<hr>--}}
 @endsection

@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
-                <h1>Welcome User</h1><a href="{{ url('/') }}">Back</a>
+                <h1>Welcome User</h1><a href="{{ route('user') }}">Back</a>
                 <hr>
                 <div class="post-preview">
                     <table class="col-md-12" border="1">
