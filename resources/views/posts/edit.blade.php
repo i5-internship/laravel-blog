@@ -23,20 +23,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
-                    <form method="POST" action="#">
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                            <label for="title">Tittle</label>
-                            <input name="title" type="text" class="form-control" placeholder="Title" value="{{ $post->title }}">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
-
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea name="description" rows="4" type="text" class="form-control"
-                                      placeholder="Description">{{ $post->description }}</textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                    @endif
+                    @include('posts.form')
                 </div>
             </div>
         </div>

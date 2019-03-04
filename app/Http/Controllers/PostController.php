@@ -21,21 +21,28 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required'
+            'title' => 'required|min:8'
         ]);
-        Post::create($request->all());
+
+        if(isset($request->id)){
+            $updatePost = Post::findOrFail($request->id);
+            $updatePost->update($request->all());
+        }
+        else{
+            Post::create($request->all());
+        }
         return redirect()->route('home');
     }
 
     public function getPost($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         return view('posts.show', compact('post'));
     }
 
     public function edit($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         return view('posts.edit', compact('post'));
     }
 

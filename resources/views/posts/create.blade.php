@@ -34,20 +34,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form method="POST" action="{{ route('store') }}">
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                            <label for="title">Tittle</label>
-                            <input name="title" type="text" class="form-control" placeholder="Title">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea name="description" rows="4" type="text" class="form-control"
-                                      placeholder="Description"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                    @include('posts.form')
                 </div>
             </div>
         </div>
