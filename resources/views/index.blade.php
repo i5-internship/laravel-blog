@@ -24,14 +24,14 @@
                         @foreach($posts as $post)
                             <a href="{{ route('get-post',$post->id) }}">
                                 <h2 class="post-title">
-                                    {{ $post->title }}
+                                    {{ str_limit($post->title, 70) }}
                                 </h2>
                                 <h3 class="post-subtitle">
-                                    {{ $post->description }}
+                                    {{ str_limit($post->description,200) }}
                                 </h3>
                             </a>
                             <p class="post-meta">Posted by
-                                <a href="#">Start Bootstrap</a>
+                                <a href="{{ route('user', $post->user->id) }}">{{ $post->user->name }}</a>
                                 on {{ (new \Carbon\Carbon($post->created_at))->diffForHumans() }} | <a href="{{ route('edit', $post->id) }}">Edit</a>
                                 | <a href="{{ route('delete',$post->id) }}">Delete</a>
                             </p>

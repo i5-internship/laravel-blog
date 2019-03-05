@@ -22,7 +22,7 @@
                 <div class="post-preview">
                     @if(isset($datas) && count($datas) > 0)
                         @foreach($datas as $data)
-                            <h3><a href="{{ route('get-user', $data->id) }}">{{ $data->name }} </a></h3><br>
+                            {{--<h3><a href="{{ route('get-user', $data->id) }}">{{ $data->name }} </a></h3><br>--}}
                         @endforeach
                     @endif
                 </div>
