@@ -10,43 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('layouts.admin.dashboard');
-});
-
-Route::get('/dashboard', function () {
-    return view('layouts.admin.dashboard');
-});
-
-Route::get('/buttons', function () {
-    return view('layouts.admin.component.buttons');
-});
-
-Route::get('/cards', function () {
-    return view('layouts.admin.component.cards');
-});
-
-Route::get('/colors', function () {
-    return view('layouts.admin.utilities.colors');
-});
-
-Route::get('/borders', function () {
-    return view('layouts.admin.utilities.borders');
-});
-
-Route::get('/animations', function () {
-    return view('layouts.admin.utilities.animations');
-});
-
-Route::get('/other', function () {
-    return view('layouts.admin.utilities.other');
-});
-
-Route::get('/login', function () {
-    return view('layouts.admin.pages.login');
-});
-
-Route::get('/register', function () {
-    return view('layouts.admin.pages.register');
+Route::get('', 'PostController@index')->name('home');
+Route::group(['prefix' => 'post'], function (){
+    Route::get('create', 'PostController@create')->name('create');
+    Route::post('store', 'PostController@store')->name('store');
+    Route::get('show/{id}', 'PostController@show')->name('show');
+    Route::get('edit/{id}', 'PostController@edit')->name('edit');
+    Route::get('delete/{id}', 'PostController@delete')->name('delete');
 });
