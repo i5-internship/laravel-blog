@@ -24,27 +24,35 @@
                 <hr>
                 <div class="post-preview">
                     <table class="col-md-12" border="1">
-                        @if(is_null($datafound))
+                        @if(is_null($userfound))
                             <h1>{{ $message }}</h1>
                         @else
                             <tr>
                                 <th>ID</th>
                                 <td>
-                                    : {{ $datafound['id'] }}
+                                    : {{ $userfound->id }}
                                 </td>
                             </tr>
                             <tr>
                                 <th>Name</th>
                                 <td>
-                                    : {{ $datafound['name'] }}
+                                    : {{ $userfound->name }}
                                 </td>
                             </tr>
                             <tr>
-                                <th style="vertical-align: top">Description</th>
+                                <th style="vertical-align: top">Email</th>
                                 <td>
-                                    : {{ $datafound['description'] }}
+                                    : {{ $userfound->email }}
+                                    {{--{{ dd($userfound->posts) }}--}}
+                                    @foreach($userfound->posts as $post)
+                                        <div>Post</div>
+                                        <div>{{ $post->title }}</div>
+                                        <div>{{ $post->description }}</div>
+
+                                    @endforeach
                                 </td>
                             </tr>
+
                         @endif
                     </table>
                 </div>

@@ -20,9 +20,9 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="post-preview">
-                    @if(isset($datas) && count($datas) > 0)
-                        @foreach($datas as $data)
-                            {{--<h3><a href="{{ route('get-user', $data->id) }}">{{ $data->name }} </a></h3><br>--}}
+                    @if(isset($users) && count($users) > 0)
+                        @foreach($users as $user)
+                            <h3><a href="{{ route('get-user', $user->id) }}">{{ $user->name }} </a></h3><br>
                         @endforeach
                     @endif
                 </div>
