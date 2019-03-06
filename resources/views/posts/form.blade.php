@@ -4,6 +4,16 @@
         @if(isset($post))
             <input type="hidden" name="id" value="{{ $post->id }}">
         @endif
+
+        @if(isset($post))
+        @else
+            <select name="user_id" id="">
+                @foreach($users as $user)
+                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                @endforeach
+            </select>
+        @endif
+
         <div class="form-group">
             <label for=""><strong>Title</strong></label>
             <input type="text" class="form-control" name="title" placeholder="Input title"

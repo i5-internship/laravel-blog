@@ -22,7 +22,7 @@
                     </h3>
                 </a>
                 <p class="post-meta">Posted by
-                    <a href="#">Start Bootstrap</a>
+                    <a href="#">{{ $post->user->name }}</a>
                     on {{ (\Carbon\Carbon::parse($post->created_at)->diffForHumans()) }}
                     | <a href="{{ route('edit',$post->id) }}">Edit</a>
                     | <a href="{{ route('delete',$post->id) }}">Delete</a>
@@ -31,6 +31,7 @@
             @endforeach
         @else
         @endif
+        {{ $posts->links() }}
     </div>
 
 @endsection
