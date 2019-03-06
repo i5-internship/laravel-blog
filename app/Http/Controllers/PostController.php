@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\CategoryPost;
+use App\User;
 use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -15,21 +19,40 @@ class PostController extends Controller
 
     public function createPost()
     {
-        return view('posts.create');
+        $users = User::all();
+        $categories = Category::all();
+        return view('posts.create', compact('users','categories'));
     }
 
+    //Record and Edit Post
     public function store(Request $request)
     {
         $this->validate($request, [
+            'user_id' => 'required',
             'title' => 'required|min:8'
         ]);
 
-        if(isset($request->id)){
-            $updatePost = Post::findOrFail($request->id);
-            $updatePost->update($request->all());
-        }
-        else{
-            Post::create($request->all());
+        try{
+
+            DB::beginTransaction();
+
+            if(isset($request->id)){
+                $updatePost = Post::findOrFail($request->id);
+                $updatePost->update($request->all());
+            }
+            else{
+                $post = Post::create($request->all());
+                $categories = $request->categories_id;
+                if ($post instanceof Post){
+                    $post->categories()->sync($categories);
+                }
+            }
+
+            DB::commit();
+
+        }catch (\Exception $exception){
+            DB::rollBack();
+            return $exception->getMessage();
         }
         return redirect()->route('home');
     }

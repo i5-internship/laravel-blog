@@ -44,9 +44,10 @@
                                 <td>
                                     : {{ $userfound->email }}
                                     {{--{{ dd($userfound->posts) }}--}}
+                                    <p hidden>{{ $i=1 }}</p>
                                     @foreach($userfound->posts as $post)
-                                        <div>Post</div>
-                                        <div>{{ $post->title }}</div>
+                                        <h4>Post {{ $i++ }}</h4>
+                                        <h6>{{ $post->title }}</h6>
                                         <div>{{ $post->description }}</div>
 
                                     @endforeach
