@@ -21,7 +21,7 @@ class PostController extends Controller
     {
         $users = User::all();
         $categories = Category::all();
-        return view('posts.create', compact('users','categories'));
+        return view('posts.create', compact('users', 'categories'));
     }
 
     //Record and Edit Post
@@ -32,25 +32,25 @@ class PostController extends Controller
             'title' => 'required|min:8'
         ]);
 
-        try{
+        try {
 
             DB::beginTransaction();
+            $post = null;
 
-            if(isset($request->id)){
-                $updatePost = Post::findOrFail($request->id);
-                $updatePost->update($request->all());
-            }
-            else{
+            if (isset($request->id)) {
+                $post = Post::findOrFail($request->id);
+                $post->update($request->all());
+            } else {
                 $post = Post::create($request->all());
-                $categories = $request->categories_id;
-                if ($post instanceof Post){
-                    $post->categories()->sync($categories);
-                }
+            }
+
+            if ($post instanceof Post) {
+                $post->categories()->sync($request->categories_id);
             }
 
             DB::commit();
 
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             DB::rollBack();
             return $exception->getMessage();
         }
@@ -66,7 +66,9 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        return view('posts.edit', compact('post'));
+        $users = User::all();
+        $categories = Category::all();
+        return view('posts.edit', compact('post', 'users', 'categories'));
     }
 
     public function delete($id)

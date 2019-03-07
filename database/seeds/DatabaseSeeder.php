@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
-        factory(\App\Category::class,10)->create();
-        factory(\App\User::class,10)->create();
+        factory(\App\Category::class, 10)->create();
+        factory(\App\User::class, 10)->create();
 //        factory(\App\Post::class)->create();
         $faker = \Faker\Factory::create();
         $users = \App\User::all();

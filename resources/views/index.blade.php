@@ -32,7 +32,8 @@
                             </a>
                             <p class="post-meta">Posted by
                                 <a href="{{ route('get-user', $post->user->id) }}">{{ $post->user->name }}</a>
-                                on {{ (new \Carbon\Carbon($post->created_at))->diffForHumans() }} | <a href="{{ route('edit', $post->id) }}">Edit</a>
+                                on {{ (new \Carbon\Carbon($post->created_at))->diffForHumans() }} | <a
+                                        href="{{ route('edit', $post->id) }}">Edit</a>
                                 | <a href="{{ route('delete',$post->id) }}">Delete</a>|
                                 @if(count($post->categories) > 0)
                                     Categories: {{ count($post->categories) }}

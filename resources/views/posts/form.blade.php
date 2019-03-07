@@ -17,37 +17,44 @@
     <div class="form-group">
         <label for="User">User Choose</label>
 
-        @if(isset($post))
-            <select class="form-control" name="user_id">
-                <option value="{{ $post->user->id }}">{{ $post->user->name }}</option>
-            </select>
-        @else
-            <select class="form-control" name="user_id" id="">
-                @foreach($users as $user)
+        <select class="form-control" name="user_id">
+            <option selected disabled>Choose User....</option>
+            @foreach($users as $user)
+                @if(isset($post))
+                    @if($user->id == $post->user->id)
+                        <option value="{{ $post->user->id }}" selected>{{ $post->user->name }}</option>
+                    @else
+                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                    @endif
+                @else
                     <option value="{{ $user->id }}">{{ $user->name }}</option>
-                @endforeach
-            </select>
-        @endif
-
+                @endif
+            @endforeach
+        </select>
     </div>
+
     <div class="form-group">
         <label for="User">Categories Choose</label>
-        @if(isset($post))
-            @if(count($post->categories) > 0)
-                <select class="form-control" name="categories_id[]" multiple>
+        <select class="form-control" name="categories_id[]" multiple>
+            @foreach($categories as $category)
+                @if(isset($post))
+                    @php $foundCategories = false @endphp
                     @foreach($post->categories as $categoryID)
-                        <option value="{{ $categoryID }}">{{ $categoryID->name }}</option>
+                        @if($category->id == $categoryID->id)
+                            @php $foundCategories = true @endphp
+                        @endif
                     @endforeach
-                </select>
-            @endif
-        @else
-            <select name="categories_id[]" class="form-control" multiple>
-                @foreach($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                @endforeach
-            </select>
-        @endif
 
+                    @if($foundCategories)
+                        <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                    @else
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endif
+                @else
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endif
+            @endforeach
+        </select>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">@if(isset($post)) Update Post @else Submit @endif</button>
 </form>
