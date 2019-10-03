@@ -30,3 +30,6 @@ Route::group(['prefix' => 'post'], function () {
     Route::get('edit/{id}','PostController@edit')->name('edit');
     Route::get('delete/{id}', 'PostController@delete')->name('delete');
 });
+
+Route::get('article', 'ArticleController@index')->name('article');
+Route::get('get-post', 'ArticleController@getPost')->name('get-post');
